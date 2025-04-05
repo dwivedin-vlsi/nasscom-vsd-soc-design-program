@@ -43,9 +43,41 @@
 6. **Signoff** – Final checks (DRC, LVS, Timing); generates GDSII
 
 ---
+## 🧪 LAB: SKY130_D1_SK3 - Get Familiar with Open-Source EDA Tools
 
-### 🧪 LAB: SKY130_D1_SK3 - Using OpenLane
-
-**Navigate to:**  
+### 📁 Directory Structure
+All OpenLane runs must happen from the following directory:
 ```bash
 ~/Desktop/work/tools/openlane_working_dir/openlane
+```
+## To open the openlane instance:
+#### Step 1: Start Docker
+docker
+
+#### Step 2: Run OpenLane in interactive mode
+./flow.tcl -interactive
+
+#### Step 3: Load OpenLane 0.9
+package require openlane 0.9
+
+#### Step 4: Prepare picorv32a design
+prep -design picorv32a
+
+![VirtualBox_vsdworkshop_02_04_2025_17_13_33](https://github.com/user-attachments/assets/e58234b9-39ec-4f24-972e-339d83fd2ba8)
+
+
+- after this runs dir will be created in the designs/picorv32a folder
+- inside the run directory the folders will be created as the runs are done
+- there is one config.tcl which is diffrent from the other config file discussed before, this one shows which default parameters are being taken bt=y the runs
+### 🛠️ Running Synthesis
+
+To run synthesis (using Yosys and ABC logic synthesis):
+
+```bash
+run_synthesis
+# Runs synthesis and logic optimization using ABC
+```
+-  after the run we can check the run dir for the results, logs and reports. results folder must have the synthesized netlsit reports folder will have all the reports for synthesis step and logs will store all the run logs for synthesis. In the reports chronologically latest report is most accurate.
+ ### 📊 DFF (Flip-Flop) Ratio Calculation
+-  At this step we need to do DFF ratio calculation as follows:
+-       **Formula:** FlipFlop Ratio = Number of D Flip-Flops / Total Number of Cells     Percentage of DFFs = FlipFlop Ratio × 100
